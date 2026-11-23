@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PUERTO ALBA — Open World Crime Game</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="scene"></canvas>
+  <canvas id="minimap" width="220" height="220"></canvas>
+  <div id="hud">
+    <div id="hud-top-left">
+      <div id="cash">$<span id="cash-value">500</span></div>
+      <div id="district-line"><span id="district-name">Marina</span> · <span id="standing-name">Standing: Neutral</span></div>
+      <div id="objective-box">
+        <div id="objective-title">FREE ROAM</div>
+        <div id="objective-text">Explore Puerto Alba. Press M for a mission.</div>
+      </div>
+    </div>
+    <div id="hud-top-right">
+      <div id="wanted-stars" aria-label="Wanted level"></div>
+      <div id="clock">☀ 12:00</div>
+      <div id="radio-line">RADIO: <span id="radio-name">ALBA FM</span></div>
+    </div>
+    <div id="hud-bottom-left">
+      <div id="health-bar"><div id="health-fill"></div><span id="health-text">100</span></div>
+      <div id="crew-line">CREW: <span id="crew-names">Dante</span></div>
+      <div id="hint-line">WASD move · E enter car · F punch · Click shoot · R radio · M mission · P pause</div>
+    </div>
+    <div id="hud-bottom-right">
+      <div id="speed-box"><span id="speed-value">0</span><span id="speed-unit"> km/h</span></div>
+      <div id="vehicle-name">ON FOOT</div>
+      <div id="mission-progress"></div>
+    </div>
+    <div id="toast"></div>
+    <div id="mission-banner"></div>
+    <div id="damage-vignette"></div>
+  </div>
+  <div id="start-screen">
+    <div class="start-inner">
+      <div class="start-kicker">AN OPEN-WORLD CRIME GAME</div>
+      <h1>PUERTO<br>ALBA</h1>
+      <p class="start-tag">Sun, salt and stolen cars. Two drivers. One last job.</p>
+      <p class="start-story">Dante Reyes is back in Puerto Alba after three years away. Mara Solís has a plan,
+      a crew to build, and a vault under the Portside docks with both their names on it.
+      Take the city district by district — and stay ahead of the Alba PD.</p>
+      <div class="start-buttons">
+        <button id="btn-new">NEW GAME</button>
+        <button id="btn-continue">CONTINUE</button>
+        <button id="btn-how">HOW TO PLAY</button>
+      </div>
+      <div class="start-leads">
+        <div class="lead-card"><b>DANTE REYES</b><span>Wheelman · +speed, +handling</span></div>
+        <div class="lead-card"><b>MARA SOLÍS</b><span>Getaway · police lose you faster</span></div>
+      </div>
+      <p class="start-controls">WASD drive / walk · SHIFT boost · E enter or steal a car · SPACE brake · F punch ·
+      Mouse click shoot · R change radio · C switch lead · M start mission · T taxi job · P pause · H help</p>
+      <p class="start-foot">10 story missions · 3 street races · taxi fares · 20 hidden packages · 5 districts ·
+      crew of 3 · wanted 1–5 stars · PIT, roadblocks &amp; helicopter police · save in your browser</p>
+    </div>
+  </div>
+  <div id="pause-screen" class="hidden">
+    <div class="start-inner">
+      <h2>PAUSED</h2>
+      <p id="pause-stats"></p>
+      <div class="start-buttons">
+        <button id="btn-resume">RESUME</button>
+        <button id="btn-save">SAVE GAME</button>
+        <button id="btn-quit">QUIT TO TITLE</button>
+      </div>
+      <p class="start-controls">Progress saves automatically after every mission. Your save lives in this browser.</p>
+    </div>
+  </div>
+  <div id="help-screen" class="hidden">
+    <div class="start-inner">
+      <h2>HOW TO PLAY</h2>
+      <p>Walk with WASD, drive with WASD + SHIFT boost. Press E near any car to get in — parked cars are free,
+      moving cars you steal (and the police notice). Wanted stars rise when you steal, speed through the city,
+      shoot, or hit pedestrians. Lose the cops by breaking line of sight; at 4+ stars expect roadblocks and the police helicopter.</p>
+      <p>Missions: press M to start the next story mission. Yellow markers guide you. Finish missions to earn cash,
+      unlock crew and raise district standing. T starts a taxi fare. Hidden packages glow gold — find all 20.</p>
+      <p>Switch leads with C. Dante drives faster; Mara shakes the police faster. Your crew — Fixer, Hacker, Lookout —
+      unlocks as you finish missions. Radio: R cycles ALBA FM / NEON 88 / SURF 102.</p>
+      <div class="start-buttons"><button id="btn-help-close">BACK</button></div>
+    </div>
+  </div>
+  <div id="gameover-screen" class="hidden">
+    <div class="start-inner">
+      <h2 id="gameover-title">BUSTED</h2>
+      <p id="gameover-text"></p>
+      <div class="start-buttons"><button id="btn-retry">TRY AGAIN</button></div>
+    </div>
+  </div>
+  <div id="err" style="display:none"></div>
+</div>
+<script src="./vendor/three.min.js"></script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
